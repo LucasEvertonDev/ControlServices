@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\ControlServices.Application\ControlServices.Application.csproj" />
+    <ProjectReference Include="..\..\ControlServices.Domain\ControlServices.Domain.csproj" />
+    <ProjectReference Include="..\ControlServices.Infra.Data\ControlServices.Infra.Data.csproj" />
+    <ProjectReference Include="..\ControlServices.Infra.Utils\ControlServices.Infra.Utils\ControlServices.Infra.Utils.csproj" />
+  </ItemGroup>
+
+</Project>
