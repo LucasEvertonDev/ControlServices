@@ -5,16 +5,18 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
   </PropertyGroup>
-
+  
   <ItemGroup>
-
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.9" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\..\ControlServices.Application\ControlServices.Application.csproj" />
-    <ProjectReference Include="..\..\ControlServices.Domain\ControlServices.Domain.csproj" />
+    <ProjectReference Include="..\..\ControlServices.Core\ControlServices.Application\ControlServices.Core.Application.csproj" />
+    <ProjectReference Include="..\..\ControlServices.Core\ControlServices.Domain\ControlServices.Core.Domain.csproj" />
     <ProjectReference Include="..\ControlServices.Infra.Data\ControlServices.Infra.Data.csproj" />
-    <ProjectReference Include="..\ControlServices.Infra.Utils\ControlServices.Infra.Utils\ControlServices.Infra.Utils.csproj" />
+    <ProjectReference Include="..\ControlServices.Infra.Plugins\ControlServices.Infra.Plugins.csproj" />
+    <ProjectReference Include="..\ControlServices.Infra.Utils\ControlServices.Infra.Utils.csproj" />
   </ItemGroup>
 
 </Project>

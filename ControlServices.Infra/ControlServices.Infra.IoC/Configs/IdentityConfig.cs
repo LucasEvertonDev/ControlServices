@@ -12,7 +12,7 @@ public static class IdentityConfig
 {
     public static IServiceCollection RegisterIdentity(this IServiceCollection services, IConfiguration configuration)
     {
-        var signingKey = configuration.GetValue<string>("Jwt:SigningKey");
+        var signingKey = configuration.GetValue<string>("Jwt:Key");
 
         services.AddIdentity<IdentityUser, IdentityRole>(options =>
         {
