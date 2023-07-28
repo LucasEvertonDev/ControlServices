@@ -13,8 +13,5 @@ public static class DbContextConfig
         services.AddDbContext<ApplicationDbContext>(options =>
            options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
                ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection"))));
-
-        
-        services.RegisterIdentity(configuration);
     }
 }

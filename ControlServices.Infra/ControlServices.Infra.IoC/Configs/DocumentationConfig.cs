@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using ControlServices.Infra.IoC.SwaggerConfig;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 
 namespace ControlServices.Infra.IoC.Configs
@@ -7,20 +9,37 @@ namespace ControlServices.Infra.IoC.Configs
     {
         public static void RegisterDocumentation(this IServiceCollection services)
         {
-            services.AddSwaggerGen(option =>
+            services.AddSwaggerGen(c =>
             {
-                option.SwaggerDoc("v1", new OpenApiInfo
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CpontrolServices.API", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
-                    Version = "v1",
-                    Title = "Control Services",
-                    Description = "Api Control Services",
-                    Contact = new OpenApiContact
+                    //definir configuracoes
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] " +
+                    "and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abcdef\"",
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
                     {
-                        Name = "lcseverton",
-                        Url = new Uri("https://www.lcseverton.com.br/contato"),
-                        Email = "contato@lcseverton.com.br"
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] {}
                     }
                 });
+
+                c.OperationFilter<AcceptLanguageHeaderFilter>();
             });
         }
     }

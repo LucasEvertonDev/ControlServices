@@ -1,4 +1,5 @@
 ﻿using ControlServices.Core.IContracts.Repositorys.User;
+using ControlServices.Core.IContracts.Services.Token;
 using ControlServices.Core.IContracts.Services.User;
 using ControlServices.Core.IContracts.Validator;
 using ControlServices.Core.Models.Models.Token;
@@ -11,11 +12,11 @@ public class CreateUserService : BaseService<CreateUserModel>, ICreateUserServic
 {
     private readonly IValidatorModel<CreateUserModel> _createUserValidatorModel;
     private readonly ICreateUserRepository _createUserRepository;
-    private readonly JwtTokenGenerator _jwtTokenGenerator;
+    private readonly IJwtTokenGenerator _jwtTokenGenerator;
 
     public CreateUserService(IValidatorModel<CreateUserModel> createUserValidatorModel,
         ICreateUserRepository createUserRepository,
-        JwtTokenGenerator jwtTokenGenerator)
+        IJwtTokenGenerator jwtTokenGenerator)
     {
         this._createUserValidatorModel = createUserValidatorModel;
         this._createUserRepository = createUserRepository;

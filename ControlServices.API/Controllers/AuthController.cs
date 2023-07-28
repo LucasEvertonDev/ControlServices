@@ -1,4 +1,5 @@
-﻿using ControlServices.Core.IContracts.Services.User;
+﻿using ControlServices.API.Middlewares;
+using ControlServices.Core.IContracts.Services.User;
 using ControlServices.Core.Models.Models.User;
 using ControlServices.Core.Models.Requests;
 using Microsoft.AspNetCore.Identity;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ControlServices.API.Controllers
 {
     [ApiController]
+    [CultureMiddleware]
     [Route("api/v1/auth")]
     public class AuthController : ControllerBase
     {

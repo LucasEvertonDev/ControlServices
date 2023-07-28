@@ -1,4 +1,5 @@
-﻿using ControlServices.Infra.IoC;
+﻿using ControlServices.API.Middlewares;
+using ControlServices.Infra.IoC;
 using Microsoft.AspNetCore.Builder;
 
 namespace ControlServices.API.Infrastructure;
@@ -16,6 +17,8 @@ public class Startup
     // Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+        // pra usar o middleware que não é attributee
+        services.AddHttpContextAccessor();
         // Add services to the container.
         services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -42,14 +45,17 @@ public class Startup
             .AllowAnyMethod()
             .AllowAnyHeader());
 
-        app.UseAuthentication();
-        app.UseAuthorization();
-
         //Swagger
         app.UseSwagger();
 
         //SwaggerUI
         app.UseSwaggerUI();
+
+        app.UseMiddleware<CultureMiddleware>();
+
+        app.UseAuthentication();
+
+        app.UseAuthorization();
 
         app.UseEndpoints(endpoints =>
         {

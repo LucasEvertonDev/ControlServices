@@ -26,6 +26,8 @@ public static class IdentityConfig
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
 
+
+
         services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -33,6 +35,8 @@ public static class IdentityConfig
         })
             .AddJwtBearer(options =>
             {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = false,
@@ -43,6 +47,7 @@ public static class IdentityConfig
                     ClockSkew = TimeSpan.Zero,
                 };
             });
+
         services.AddAuthorization();
 
         return services;
