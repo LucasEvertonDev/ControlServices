@@ -2,7 +2,7 @@
 
 namespace ControlServices.Core.IContracts.Repositorys.User;
 
-public interface ICreateUserRepository
+public interface ILoginRepository
 {
-    Task<CreateUserModel> CreateAsync(CreateUserModel userModel);
+    Task<UserModel> LoginAsync(LoginModel loginModel);
 }

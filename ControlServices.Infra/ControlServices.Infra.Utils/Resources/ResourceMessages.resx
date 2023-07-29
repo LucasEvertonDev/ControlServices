@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="EmailAlreadyRegistered" xml:space="preserve">
+    <value>Já existe um usuário cadastrado para o email informado</value>
+  </data>
   <data name="EmailRequired" xml:space="preserve">
     <value>Email é  obrigatório</value>
+  </data>
+  <data name="LoginAlreadRegistered" xml:space="preserve">
+    <value>Já existe um usuário cadastrado para o login informado</value>
   </data>
   <data name="PasswordMinLenghtSixCharacters" xml:space="preserve">
     <value>A Senha deve conter no mínimo seis caracteres</value>
@@ -126,7 +132,22 @@
   <data name="PasswordRequired" xml:space="preserve">
     <value>Senha é obrigatória</value>
   </data>
+  <data name="Unknownerror" xml:space="preserve">
+    <value>Erro desconhecido</value>
+  </data>
+  <data name="UserEmailInvalid" xml:space="preserve">
+    <value>Email inválido</value>
+  </data>
+  <data name="UserNameInvalid" xml:space="preserve">
+    <value>Login inválido</value>
+  </data>
+  <data name="UserNameMinLenght" xml:space="preserve">
+    <value>O Login deve conter no mínimo cinco caracteres.</value>
+  </data>
   <data name="UserNameRequired" xml:space="preserve">
-    <value>Nome é obrigatório</value>
+    <value>Login é obrigatório</value>
+  </data>
+  <data name="UserOrPasswordInvalid" xml:space="preserve">
+    <value>Login e senha inválidos</value>
   </data>
 </root>

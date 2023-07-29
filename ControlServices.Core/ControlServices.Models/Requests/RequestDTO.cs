@@ -6,8 +6,8 @@ public class RequestDTO<TRequest> where TRequest : BaseModel
 {
     public RequestDTO()
     {
-        Model = Activator.CreateInstance<TRequest>();
+        Body = Activator.CreateInstance<TRequest>();
     }
 
-    public TRequest Model { get; set; }
+    public TRequest Body { get; set; }
 }

@@ -4,4 +4,8 @@ namespace ControlServices.Core.Models.Models.Base;
 
 public class BaseModel : IModel
 {
+	public BaseModel()
+	{
+
+	}
 }

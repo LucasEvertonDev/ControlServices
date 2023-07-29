@@ -17,7 +17,7 @@ namespace ControlServices.Infra.Data.Migrations
             //    {
             //        { "1", "Administrador", "Admin", null },
             //    });
-            migrationBuilder.Sql("INSERT INTO `controlservices`.`aspnetroles` (`Id`, `Name`, `NormalizedName`, `ConcurrencyStamp`) VALUES ('1', 'Administrador', 'admin', null);");
+            migrationBuilder.Sql("INSERT INTO `controlservices`.`aspnetroles` (`Id`, `Name`, `NormalizedName`, `ConcurrencyStamp`) VALUES ('fd301af2-4459-4a15-9e88-f9d3cf35ac16', 'Administrador', 'ADMINISTRADOR', null);");
         }
 
         /// <inheritdoc />

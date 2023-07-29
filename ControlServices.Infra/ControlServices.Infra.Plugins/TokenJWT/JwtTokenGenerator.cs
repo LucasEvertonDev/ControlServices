@@ -27,11 +27,11 @@ public class JwtTokenGenerator : IJwtTokenGenerator
         _roleManager = roleManager;
     }
 
-    public async Task<TokenModel> GenerateTokenJWT(string email)
+    public async Task<TokenModel> GenerateTokenJWT(string login)
     {
-        var expiration = DateTime.UtcNow.AddHours(double.Parse(_configuration["TokenConfiguration:ExpireHours"] ?? ""));
+        var expiration = DateTime.UtcNow.AddHours(double.Parse(_configuration["Jwt:ExpireHours"] ?? ""));
 
-        var user = await _userManager.FindByEmailAsync(email);
+        var user = await _userManager.FindByNameAsync(login);
       
         var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"] ?? "");
         var tokenDescriptor = new SecurityTokenDescriptor

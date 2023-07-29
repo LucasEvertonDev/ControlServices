@@ -1,4 +1,5 @@
-﻿using ControlServices.API.Middlewares;
+﻿using ControlServices.API.Filter;
+using ControlServices.API.Middlewares;
 using ControlServices.Infra.IoC;
 using Microsoft.AspNetCore.Builder;
 
@@ -13,10 +14,10 @@ public class Startup
 
     public IConfiguration Configuration { get; }
 
-    // This method gets called by the runtime. 
-    // Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+        // Filtro de exceptios
+        services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
         // pra usar o middleware que não é attributee
         services.AddHttpContextAccessor();
         // Add services to the container.
@@ -27,8 +28,6 @@ public class Startup
         services.AddInfrastructureAPI(Configuration);
     }
 
-    // This method gets called by the runtime. 
-    // Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         if (env.IsDevelopment())

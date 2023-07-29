@@ -4,18 +4,17 @@ using ControlServices.Core.IContracts.Services.User;
 using ControlServices.Core.IContracts.Validator;
 using ControlServices.Core.Models.Models.Token;
 using ControlServices.Core.Models.Models.User;
-using ControlServices.Infra.Data.Token;
 
 namespace ControlServices.Core.Application.Services.User;
 
-public class CreateUserService : BaseService<CreateUserModel>, ICreateUserService
+public class CreateUsersService : BaseService, ICreateUsersService
 {
-    private readonly IValidatorModel<CreateUserModel> _createUserValidatorModel;
-    private readonly ICreateUserRepository _createUserRepository;
+    private readonly IValidatorModel<CreateUsersModel> _createUserValidatorModel;
+    private readonly ICreateUsersRepository _createUserRepository;
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
 
-    public CreateUserService(IValidatorModel<CreateUserModel> createUserValidatorModel,
-        ICreateUserRepository createUserRepository,
+    public CreateUsersService(IValidatorModel<CreateUsersModel> createUserValidatorModel,
+        ICreateUsersRepository createUserRepository,
         IJwtTokenGenerator jwtTokenGenerator)
     {
         this._createUserValidatorModel = createUserValidatorModel;
@@ -23,16 +22,19 @@ public class CreateUserService : BaseService<CreateUserModel>, ICreateUserServic
         this._jwtTokenGenerator = jwtTokenGenerator;
     }
 
-    public async Task<TokenModel> ExecuteAsync(CreateUserModel userModel)
+    public async Task<TokenModel> ExecuteAsync(CreateUsersModel userModel)
     {
-        await Validate(userModel);
+        return await OnTransactionAsync(async () =>
+        {
+            await ValidateAsync(userModel);
 
-        await _createUserRepository.CreateAsync(userModel);
+            await _createUserRepository.CreateAsync(userModel);
 
-        return await _jwtTokenGenerator.GenerateTokenJWT(email: userModel.Email);
+            return await _jwtTokenGenerator.GenerateTokenJWT(email: userModel.Login);
+        });
     }
 
-    protected async override Task Validate(CreateUserModel userModel)
+    protected async Task ValidateAsync(CreateUsersModel userModel)
     {
         await _createUserValidatorModel.ValidateModelAsync(userModel);
     }

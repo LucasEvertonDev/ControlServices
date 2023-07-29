@@ -109,4 +109,16 @@
   <data name="UserNameRequired" xml:space="preserve">
     <value>Name is required</value>
   </data>
+  <data name="Unknownerror" xml:space="preserve">
+    <value>Unknown error</value>
+  </data>
+  <data name="UserOrPasswordInvalid" xml:space="preserve">
+    <value>Invalid login or password</value>
+  </data>
+  <data name="UserEmailInvalid" xml:space="preserve">
+    <value>Invalid email address</value>
+  </data>
+  <data name="UserNameInvalid" xml:space="preserve">
+    <value>Invalid login</value>
+  </data>
 </root>

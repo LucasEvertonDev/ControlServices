@@ -61,11 +61,29 @@ namespace ControlServices.Infra.Utils.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Já existe um usuário cadastrado para o email informado.
+        /// </summary>
+        public static string EmailAlreadyRegistered {
+            get {
+                return ResourceManager.GetString("EmailAlreadyRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Email é  obrigatório.
         /// </summary>
         public static string EmailRequired {
             get {
                 return ResourceManager.GetString("EmailRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Já existe um usuário cadastrado para o login informado.
+        /// </summary>
+        public static string LoginAlreadRegistered {
+            get {
+                return ResourceManager.GetString("LoginAlreadRegistered", resourceCulture);
             }
         }
         
@@ -88,11 +106,56 @@ namespace ControlServices.Infra.Utils.Resources {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Nome é obrigatório.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Erro desconhecido.
+        /// </summary>
+        public static string Unknownerror {
+            get {
+                return ResourceManager.GetString("Unknownerror", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Email inválido.
+        /// </summary>
+        public static string UserEmailInvalid {
+            get {
+                return ResourceManager.GetString("UserEmailInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Login inválido.
+        /// </summary>
+        public static string UserNameInvalid {
+            get {
+                return ResourceManager.GetString("UserNameInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O Login deve conter no mínimo cinco caracteres..
+        /// </summary>
+        public static string UserNameMinLenght {
+            get {
+                return ResourceManager.GetString("UserNameMinLenght", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Login é obrigatório.
         /// </summary>
         public static string UserNameRequired {
             get {
                 return ResourceManager.GetString("UserNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Login e senha inválidos.
+        /// </summary>
+        public static string UserOrPasswordInvalid {
+            get {
+                return ResourceManager.GetString("UserOrPasswordInvalid", resourceCulture);
             }
         }
     }

@@ -8,13 +8,9 @@ public class BusinessException : ControlServicesException
 {
     public List<string> ErrorsMessages { get; set; }
 
-    public BusinessException(string message) : base(message)
+    public BusinessException(params string[] errorsMessage) : base(string.Empty)
     {
-    }
-
-    public BusinessException(List<string> errorsMessage) : base(string.Empty)
-    {
-        ErrorsMessages = errorsMessage;
+        ErrorsMessages = errorsMessage.ToList();
     }
 
     protected BusinessException(SerializationInfo info, StreamingContext context) : base(info, context)

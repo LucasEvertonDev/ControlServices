@@ -14,12 +14,12 @@
 
   <ItemGroup>
     <Compile Include="Models\Base\BaseModel.cs" />
+    <Compile Include="Models\Errors\ErrorsModel.cs" />
     <Compile Include="Models\Token\TokenModel.cs" />
-    <Compile Include="Models\User\CreateUserModel.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Responses\" />
+    <Compile Include="Models\User\CreateUsersModel.cs" />
+    <Compile Include="Models\User\LoginModel.cs" />
+    <Compile Include="Models\User\SearchUsersModel.cs" />
+    <Compile Include="Models\User\UserModel.cs" />
   </ItemGroup>
 
 </Project>

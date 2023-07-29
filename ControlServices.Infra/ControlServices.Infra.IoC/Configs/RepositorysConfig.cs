@@ -8,6 +8,8 @@ public static class RepositorysConfig
 {
     public static void RegisterRepositorys(this IServiceCollection services)
     {
-        services.AddScoped<ICreateUserRepository, CreateUserRepository>();
+        services.AddScoped<ICreateUsersRepository, UserRepository>();
+        services.AddScoped<ILoginRepository, UserRepository>();
+        services.AddScoped<ISearchUsersRepository, UserRepository>();
     }
 }

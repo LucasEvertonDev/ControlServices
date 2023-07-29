@@ -1,4 +1,6 @@
-﻿using ControlServices.Infra.Data.Contexts;
+﻿using ControlServices.Core.IContracts.Repositorys;
+using ControlServices.Infra.Data.Contexts;
+using ControlServices.Infra.Data.Contexts.Repositorys;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,5 +15,7 @@ public static class DbContextConfig
         services.AddDbContext<ApplicationDbContext>(options =>
            options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
                ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection"))));
+
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
     }
 }

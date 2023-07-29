@@ -1,34 +1,52 @@
-﻿using ControlServices.API.Middlewares;
+﻿using Azure;
+using ControlServices.API.Middlewares;
 using ControlServices.Core.IContracts.Services.User;
+using ControlServices.Core.Models.Models.Token;
 using ControlServices.Core.Models.Models.User;
 using ControlServices.Core.Models.Requests;
+using ControlServices.Core.Models.Responses;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControlServices.API.Controllers
 {
-    [ApiController]
-    [CultureMiddleware]
-    [Route("api/v1/auth")]
-    public class AuthController : ControllerBase
+    public class AuthController : BaseController
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly ICreateUserService _createUserService;
+        private readonly ICreateUsersService _createUserService;
+        private readonly ILoginService _loginService;
 
-        public AuthController(UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> _signInManager,
-            ICreateUserService createUserService)
+        public AuthController (ICreateUsersService createUserService,
+                ILoginService loginService
+            )
         {
-            this._userManager = userManager;
-            this._signInManager = _signInManager;
             this._createUserService = createUserService;
+            this._loginService = loginService;
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult> CreateUser([FromBody] RequestDTO<CreateUserModel> requestDTO)
+        [ProducesResponseType(typeof(ResponseDTO<TokenModel>), StatusCodes.Status200OK)]
+        public async Task<ActionResult> Register([FromBody] RequestDTO<CreateUsersModel> requestDTO)
         {
-            return Ok(await _createUserService.ExecuteAsync(requestDTO.Model));
+            var response = new ResponseDTO<TokenModel>()
+            {
+                Content = await _createUserService.ExecuteAsync(requestDTO.Body),
+                Sucess = true
+            };
+
+            return Ok(response);
+        }
+
+        [HttpPost("login")]
+        [ProducesResponseType(typeof(ResponseDTO<TokenModel>), StatusCodes.Status200OK)]
+        public async Task<ActionResult> Login([FromBody] RequestDTO<LoginModel> requestDTO)
+        {
+            var response = new ResponseDTO<TokenModel>()
+            {
+                Content = await _loginService.ExecuteAsync(requestDTO.Body),
+                Sucess = true
+            };
+
+            return Ok(response);
         }
     }
 }
