@@ -1,6 +1,8 @@
 ﻿using ControlServices.Core.IContracts.Services.User;
+using ControlServices.Core.Models.Constants;
 using ControlServices.Core.Models.Models.User;
 using ControlServices.Core.Models.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControlServices.API.Controllers
@@ -15,6 +17,7 @@ namespace ControlServices.API.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = Roles.Admin)]
         [ProducesResponseType(typeof(ResponseDTO<List<SearchUsersModel>>), StatusCodes.Status200OK)]
         public async Task<ActionResult> Get()
         {
