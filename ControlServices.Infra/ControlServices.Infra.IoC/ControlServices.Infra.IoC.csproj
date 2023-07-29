@@ -12,9 +12,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\..\ControlServices.Core\ControlServices.Application\ControlServices.Core.Application.csproj" />
     <ProjectReference Include="..\..\ControlServices.Core\ControlServices.Core.Application\ControlServices.Core.Application.csproj" />
-    <ProjectReference Include="..\..\ControlServices.Core\ControlServices.Domain\ControlServices.Core.Domain.csproj" />
     <ProjectReference Include="..\ControlServices.Infra.Data\ControlServices.Infra.Data.csproj" />
     <ProjectReference Include="..\ControlServices.Infra.Plugins\ControlServices.Infra.Plugins.csproj" />
     <ProjectReference Include="..\ControlServices.Infra.Utils\ControlServices.Infra.Utils.csproj" />

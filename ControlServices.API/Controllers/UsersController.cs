@@ -1,32 +1,47 @@
-﻿using ControlServices.Core.IContracts.Services.User;
+﻿using ControlServices.API.Infrastructure.Attributes;
+using ControlServices.API.Infrastructure.Helpers;
+using ControlServices.API.RouteParams.Users;
+using ControlServices.Core.IContracts.Services.User;
 using ControlServices.Core.Models.Constants;
 using ControlServices.Core.Models.Models.User;
 using ControlServices.Core.Models.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
-namespace ControlServices.API.Controllers
+namespace ControlServices.API.Controllers;
+
+public class UsersController : BaseController
 {
-    public class UsersController : BaseController
+    private readonly ISearchUsersService _searchUsersService;
+
+    public UsersController(ISearchUsersService searchUsersService)
     {
-        private readonly ISearchUsersService _searchUsersService;
+        this._searchUsersService = searchUsersService;
+    }
 
-        public UsersController(ISearchUsersService searchUsersService)
+    [HttpGet]
+    [Authorize(Roles = Roles.Admin)]
+    [ProducesResponseType(typeof(ResponseDTO<List<SearchUsersModel>>), StatusCodes.Status200OK)]
+    public async Task<ActionResult> Get()
+    {
+        var response = new ResponseDTO<List<SearchUsersModel>>()
         {
-            this._searchUsersService = searchUsersService;
-        }
+            Content = await _searchUsersService.ExecuteAsync(),
+            Sucess = true
+        };
+        return Ok(response);
+    }
 
-        [HttpGet]
-        [Authorize(Roles = Roles.Admin)]
-        [ProducesResponseType(typeof(ResponseDTO<List<SearchUsersModel>>), StatusCodes.Status200OK)]
-        public async Task<ActionResult> Get()
+    [HttpGetParams<UsersParams>()]
+    [ProducesResponseType(typeof(ResponseDTO<List<SearchUsersModel>>), StatusCodes.Status200OK)]
+    public async Task<ActionResult> Get([FromQuery] UsersParams usersParams)
+    {
+        var response = new ResponseDTO<List<SearchUsersModel>>()
         {
-            var response = new ResponseDTO<List<SearchUsersModel>>()
-            {
-                Content = await _searchUsersService.ExecuteAsync(),
-                Sucess = true
-            };
-            return Ok(response);
-        }
+            Content = await _searchUsersService.ExecuteAsync(),
+            Sucess = true
+        };
+        return Ok(response);
     }
 }

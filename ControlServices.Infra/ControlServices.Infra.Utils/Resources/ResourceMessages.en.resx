@@ -121,4 +121,13 @@
   <data name="UserNameInvalid" xml:space="preserve">
     <value>Invalid login</value>
   </data>
+  <data name="EmailAlreadyRegistered" xml:space="preserve">
+    <value>There is already a registered user for the specified email</value>
+  </data>
+  <data name="LoginAlreadRegistered" xml:space="preserve">
+    <value>There is already a registered user for the specified login</value>
+  </data>
+  <data name="UserNameMinLenght" xml:space="preserve">
+    <value>Login must be 5 character long</value>
+  </data>
 </root>

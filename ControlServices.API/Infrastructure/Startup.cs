@@ -1,7 +1,9 @@
-﻿using ControlServices.API.Filter;
-using ControlServices.API.Middlewares;
+﻿using ControlServices.API.Infrastructure.Filter;
+using ControlServices.API.Infrastructure.Middlewares;
 using ControlServices.Infra.IoC;
+using ControlServices.Infra.Utils.Utils;
 using Microsoft.AspNetCore.Builder;
+using System.Reflection;
 
 namespace ControlServices.API.Infrastructure;
 
@@ -16,6 +18,8 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
+        EngineContext.Assembly = Assembly.GetExecutingAssembly().GetName().Name;
+
         // Filtro de exceptios
         services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
         // pra usar o middleware que não é attributee
@@ -45,7 +49,10 @@ public class Startup
             .AllowAnyHeader());
 
         //Swagger
-        app.UseSwagger();
+        app.UseSwagger(options =>
+        {
+            options.SerializeAsV2 = true;
+        });
 
         //SwaggerUI
         app.UseSwaggerUI();

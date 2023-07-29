@@ -1,7 +1,7 @@
 ﻿using ControlServices.Infra.Utils.Resources;
 using System.Globalization;
 
-namespace ControlServices.API.Middlewares;
+namespace ControlServices.API.Infrastructure.Middlewares;
 public class CultureMiddleware
 {
     private readonly RequestDelegate _next;

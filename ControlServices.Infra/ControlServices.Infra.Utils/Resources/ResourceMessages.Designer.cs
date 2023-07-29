@@ -133,7 +133,7 @@ namespace ControlServices.Infra.Utils.Resources {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a O Login deve conter no mínimo cinco caracteres..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O Login deve conter no mínimo cinco caracteres.
         /// </summary>
         public static string UserNameMinLenght {
             get {

@@ -17,7 +17,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\ControlServices.Core\ControlServices.Core.IContracts\ControlServices.Core.IContracts.csproj" />
     <ProjectReference Include="..\..\ControlServices.Core\ControlServices.Core.Models\ControlServices.Core.Models.csproj" />
-    <ProjectReference Include="..\..\ControlServices.Core\ControlServices.Models\ControlServices.Core.Models.csproj" />
     <ProjectReference Include="..\ControlServices.Infra.Utils\ControlServices.Infra.Utils.csproj" />
   </ItemGroup>
 

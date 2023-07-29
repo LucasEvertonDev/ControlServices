@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Net;
 
-namespace ControlServices.API.Filter;
+namespace ControlServices.API.Infrastructure.Filter;
 
 public class ExceptionFilter : IExceptionFilter
 {
@@ -29,7 +29,7 @@ public class ExceptionFilter : IExceptionFilter
     /// <param name="context"></param>
     private static void HandleCustomExceptions(ExceptionContext context)
     {
-        if (context.Exception is BusinessException) 
+        if (context.Exception is BusinessException)
         {
             var validationException = context.Exception as BusinessException;
 

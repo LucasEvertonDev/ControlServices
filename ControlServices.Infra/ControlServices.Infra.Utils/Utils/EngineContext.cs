@@ -27,5 +27,7 @@ namespace ControlServices.Infra.Utils.Utils
                 return null;
             }
         }
+
+        public static string Assembly { get; set; }
     }
 }

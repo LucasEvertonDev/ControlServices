@@ -17,8 +17,6 @@
   <ItemGroup>
     <ProjectReference Include="..\ControlServices.Core.Domain\ControlServices.Core.Domain.csproj" />
     <ProjectReference Include="..\ControlServices.Core.Models\ControlServices.Core.Models.csproj" />
-    <ProjectReference Include="..\ControlServices.Domain\ControlServices.Core.Domain.csproj" />
-    <ProjectReference Include="..\ControlServices.Models\ControlServices.Core.Models.csproj" />
   </ItemGroup>
 
 </Project>

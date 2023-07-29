@@ -9,6 +9,8 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructureAPI(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddRouting(option => option.LowercaseUrls = true);
+
         // Register db context
         services.RegisterDbContext(configuration);
 

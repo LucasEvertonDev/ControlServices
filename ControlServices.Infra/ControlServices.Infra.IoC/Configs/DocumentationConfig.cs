@@ -1,6 +1,7 @@
 ﻿using ControlServices.Infra.IoC.SwaggerConfig;
+using ControlServices.Infra.IoC.SwaggerFilters;
+using ControlServices.Infra.Utils.Utils;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 
 namespace ControlServices.Infra.IoC.Configs
@@ -40,6 +41,11 @@ namespace ControlServices.Infra.IoC.Configs
                 });
 
                 c.OperationFilter<AcceptLanguageHeaderFilter>();
+
+                c.OperationFilter<SwaggerDefaultValues>();
+
+                var xmlFilename = $"{EngineContext.Assembly}.xml";
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
             });
         }
     }

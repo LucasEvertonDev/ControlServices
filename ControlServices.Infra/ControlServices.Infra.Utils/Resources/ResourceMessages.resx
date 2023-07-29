@@ -142,7 +142,7 @@
     <value>Login inválido</value>
   </data>
   <data name="UserNameMinLenght" xml:space="preserve">
-    <value>O Login deve conter no mínimo cinco caracteres.</value>
+    <value>O Login deve conter no mínimo cinco caracteres</value>
   </data>
   <data name="UserNameRequired" xml:space="preserve">
     <value>Login é obrigatório</value>
