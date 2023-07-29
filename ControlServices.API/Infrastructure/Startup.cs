@@ -1,5 +1,7 @@
 ﻿using ControlServices.API.Infrastructure.Filter;
 using ControlServices.API.Infrastructure.Middlewares;
+using ControlServices.Core.Models.Models.Errors;
+using ControlServices.Core.Models.Responses;
 using ControlServices.Infra.IoC;
 using ControlServices.Infra.Utils.Utils;
 using Microsoft.AspNetCore.Builder;
@@ -21,7 +23,14 @@ public class Startup
         EngineContext.Assembly = Assembly.GetExecutingAssembly().GetName().Name;
 
         // Filtro de exceptios
-        services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
+        services.AddMvc(options => 
+        {
+            options.Filters.Add(typeof(ExceptionFilter));
+            options.Filters.Add(new Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute(typeof(ResponseDTO<ErrorsModel>), 400));
+            options.Filters.Add(new Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute(typeof(ResponseDTO<ErrorsModel>), 401));
+            options.Filters.Add(new Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute(typeof(ResponseDTO<ErrorsModel>), 500));
+        });
+
         // pra usar o middleware que não é attributee
         services.AddHttpContextAccessor();
         // Add services to the container.
@@ -34,6 +43,8 @@ public class Startup
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
+
+
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();

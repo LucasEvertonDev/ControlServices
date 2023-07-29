@@ -1,16 +1,12 @@
-﻿using ControlServices.Infra.Utils.Resources;
+﻿using ControlServices.Core.Models.Enuns;
+using ControlServices.Infra.Utils.Resources;
+using Microsoft.OpenApi.Extensions;
 using System.Globalization;
 
 namespace ControlServices.API.Infrastructure.Middlewares;
 public class CultureMiddleware
 {
     private readonly RequestDelegate _next;
-
-    private readonly IList<string> _idiomasSuportados = new List<string>
-    {
-        "pt",
-        "en"
-    };
 
     public CultureMiddleware(RequestDelegate next)
     {
@@ -25,13 +21,17 @@ public class CultureMiddleware
         {
             var linguagem = context.Request.Headers["Accept-Language"].ToString();
 
-            if (_idiomasSuportados.Any(c => c.Equals(linguagem)))
+            if (Culture.Ingles.GetDisplayName() == linguagem)
             {
-                cultura = new CultureInfo(linguagem);
+                cultura = new CultureInfo("en");
+            }
+            else if (Culture.Portugues.GetDisplayName() == linguagem)
+            {
+                cultura = new CultureInfo("pt");
             }
         }
-        ResourceMessages.Culture = cultura;
 
+        ResourceMessages.Culture = cultura;
         CultureInfo.CurrentCulture = cultura;
         CultureInfo.CurrentUICulture = cultura;
 

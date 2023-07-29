@@ -1,4 +1,6 @@
-﻿using Microsoft.OpenApi.Any;
+﻿using ControlServices.Core.Models.Enuns;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -11,14 +13,15 @@ public class AcceptLanguageHeaderFilter : IOperationFilter
         {
             In = ParameterLocation.Header,
             Name = "accept-language",
-            Description = "pass the locale here: examples like => pt,en",
+           // Description = "pass the locale here: examples like => pt,en",
             Schema = new OpenApiSchema
             {
-                Type = "String",
-                Default = new OpenApiString("pt"),
+                Type = "string",
+                Default = new OpenApiString(Culture.Portugues.GetDisplayName()),
+                Enum = typeof(Culture).GetEnumNames().Select(name => new OpenApiString(name)).Cast<IOpenApiAny>().ToList(),
+                Nullable = true
             },
             //Required = true
         });
-
     }
 }

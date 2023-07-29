@@ -1,4 +1,5 @@
 ﻿using ControlServices.Core.IContracts.Services.User;
+using ControlServices.Core.Models.Models.Errors;
 using ControlServices.Core.Models.Models.Token;
 using ControlServices.Core.Models.Models.User;
 using ControlServices.Core.Models.Requests;
@@ -38,7 +39,7 @@ namespace ControlServices.API.Controllers
         ///     }
         ///
         /// </remarks>
-        /// <param name="requestDTO"></param>
+        /// <response code="200">User is Registred</response>
         /// <returns></returns>
         [HttpPost("register")]
         [ProducesResponseType(typeof(ResponseDTO<TokenModel>), StatusCodes.Status200OK)]
