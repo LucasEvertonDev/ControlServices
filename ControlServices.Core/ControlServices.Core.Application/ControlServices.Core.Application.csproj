@@ -9,5 +9,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\ControlServices.Infra\ControlServices.Infra.Plugins\ControlServices.Infra.Plugins.csproj" />
     <ProjectReference Include="..\ControlServices.Core.IContracts\ControlServices.Core.IContracts.csproj" />
+    <ProjectReference Include="..\ControlServices.Core.Models\ControlServices.Core.Models.csproj" />
   </ItemGroup>
 </Project>

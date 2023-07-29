@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ControlServices.Core\ControlServices.Core.Models\ControlServices.Core.Models.csproj" />
     <ProjectReference Include="..\ControlServices.Infra\ControlServices.Infra.IoC\ControlServices.Infra.IoC.csproj" />
   </ItemGroup>
 
