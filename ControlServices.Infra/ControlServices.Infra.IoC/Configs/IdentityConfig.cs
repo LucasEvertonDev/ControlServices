@@ -1,4 +1,5 @@
 ﻿using ControlServices.Infra.Data.Contexts;
+using ControlServices.Infra.Plugins.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -14,7 +15,7 @@ public static class IdentityConfig
     {
         var signingKey = configuration.GetValue<string>("Jwt:Key");
 
-        services.AddIdentity<IdentityUser, IdentityRole>(options =>
+        services.AddIdentity<ApplicationUser, IdentityRole>(options =>
         {
             options.Password.RequireDigit = false;
             options.Password.RequiredLength = 6;

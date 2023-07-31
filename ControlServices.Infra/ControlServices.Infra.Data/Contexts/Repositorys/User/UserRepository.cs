@@ -2,6 +2,7 @@
 using ControlServices.Core.IContracts.Repositorys.User;
 using ControlServices.Core.Models.Models.User;
 using ControlServices.Core.Models.RouteParams.Users;
+using ControlServices.Infra.Plugins.Identity;
 using ControlServices.Infra.Utils.Exceptions;
 using ControlServices.Infra.Utils.Resources;
 using Microsoft.AspNetCore.Identity;
@@ -12,12 +13,12 @@ namespace ControlServices.Infra.Data.Contexts.Repositorys.User;
 
 public class UserRepository : ICreateUsersRepository, ILoginRepository, ISearchUsersRepository
 {
-    private readonly UserManager<IdentityUser> _userManager;
-    private readonly SignInManager<IdentityUser> _signInManager;
+    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly RoleManager<IdentityRole> _roleManager;
 
-    public UserRepository(UserManager<IdentityUser> userManager,
-        SignInManager<IdentityUser> signInManager,
+    public UserRepository(UserManager<ApplicationUser> userManager,
+        SignInManager<ApplicationUser> signInManager,
         RoleManager<IdentityRole> roleManager)
     {
         this._userManager = userManager;
@@ -41,7 +42,7 @@ public class UserRepository : ICreateUsersRepository, ILoginRepository, ISearchU
             throw new BusinessException(ResourceMessages.LoginAlreadRegistered);
         }
 
-        var result = await _userManager.CreateAsync(new IdentityUser
+        var result = await _userManager.CreateAsync(new ApplicationUser
         {
             UserName = userModel.Login,
             Email = userModel.Email,
@@ -87,7 +88,7 @@ public class UserRepository : ICreateUsersRepository, ILoginRepository, ISearchU
     {
         return await _userManager.Users.AsNoTracking()
             .Where(user => (string.IsNullOrEmpty(usersParams.Email) || user.Email == usersParams.Email)
-                && (usersParams.PhoneNumber.HasValue || user.PhoneNumber.Contains(usersParams.PhoneNumber.Value.ToString()))
+                && (!usersParams.PhoneNumber.HasValue || user.PhoneNumber.Contains(usersParams.PhoneNumber.Value.ToString()))
             )
             .Select(user => new SearchUsersModel
             {

@@ -25,6 +25,7 @@
     <ProjectReference Include="..\..\ControlServices.Core\ControlServices.Core.Domain\ControlServices.Core.Domain.csproj" />
     <ProjectReference Include="..\..\ControlServices.Core\ControlServices.Core.IContracts\ControlServices.Core.IContracts.csproj" />
     <ProjectReference Include="..\..\ControlServices.Core\ControlServices.Core.Models\ControlServices.Core.Models.csproj" />
+    <ProjectReference Include="..\ControlServices.Infra.Plugins\ControlServices.Infra.Plugins.csproj" />
     <ProjectReference Include="..\ControlServices.Infra.Utils\ControlServices.Infra.Utils.csproj" />
   </ItemGroup>
 

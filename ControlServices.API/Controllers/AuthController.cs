@@ -34,7 +34,7 @@ namespace ControlServices.API.Controllers
         ///              "email": "lcseverton@gmail.com",
         ///              "phoneNumber": "+5532998313394",
         ///              "password": "123456",
-        ///              "role": "Admin"
+        ///              "role": "Administrador"
         ///         }
         ///     }
         ///

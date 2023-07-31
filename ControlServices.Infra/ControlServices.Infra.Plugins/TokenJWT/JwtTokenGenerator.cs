@@ -1,5 +1,6 @@
 ﻿using ControlServices.Core.IContracts.Services.Token;
 using ControlServices.Core.Models.Models.Token;
+using ControlServices.Infra.Plugins.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -12,13 +13,13 @@ namespace ControlServices.Infra.Data.Token;
 public class JwtTokenGenerator : IJwtTokenGenerator
 {
     private readonly IConfiguration _configuration;
-    private readonly UserManager<IdentityUser> _userManager;
-    private readonly SignInManager<IdentityUser> _signInManager;
+    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly RoleManager<IdentityRole> _roleManager;
 
     public JwtTokenGenerator(IConfiguration configuration,
-        UserManager<IdentityUser> userManager,
-        SignInManager<IdentityUser> signInManager,
+        UserManager<ApplicationUser> userManager,
+        SignInManager<ApplicationUser> signInManager,
         RoleManager<IdentityRole> roleManager)
     {
         this._configuration = configuration;
@@ -44,7 +45,7 @@ public class JwtTokenGenerator : IJwtTokenGenerator
             Expires = expiration,
             Subject = new ClaimsIdentity(new[]
             {
-                new Claim(nameof(IdentityUser.Id), user.Id),
+                new Claim(nameof(ApplicationUser.Id), user.Id),
                 new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(ClaimTypes.Email, user.Email ?? "")
             })
