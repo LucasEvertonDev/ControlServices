@@ -1,11 +1,14 @@
-﻿using ControlServices.API.Infrastructure.Filter;
+﻿using Azure.Core;
+using ControlServices.API.Infrastructure.Filter;
 using ControlServices.API.Infrastructure.Middlewares;
 using ControlServices.Core.Models.Models.Errors;
 using ControlServices.Core.Models.Responses;
+using ControlServices.Infra.Data.Migrations;
 using ControlServices.Infra.IoC;
 using ControlServices.Infra.Utils.Utils;
 using Microsoft.AspNetCore.Builder;
 using System.Reflection;
+using System.Reflection.PortableExecutable;
 
 namespace ControlServices.API.Infrastructure;
 
@@ -66,7 +69,12 @@ public class Startup
         });
 
         //SwaggerUI
-        app.UseSwaggerUI();
+        app.UseSwaggerUI(c =>
+        {
+            //// Mudar request na mão 
+            ////c.UseRequestInterceptor("(request) => { request.url =  console.log(request); return request; }");
+            ////c.UseResponseInterceptor("(response) => { return response; }");
+        });
 
         app.UseMiddleware<CultureMiddleware>();
 

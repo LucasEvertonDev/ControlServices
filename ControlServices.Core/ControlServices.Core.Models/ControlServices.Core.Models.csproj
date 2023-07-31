@@ -18,8 +18,13 @@
     <Compile Include="Models\Token\TokenModel.cs" />
     <Compile Include="Models\User\CreateUsersModel.cs" />
     <Compile Include="Models\User\LoginModel.cs" />
+    <Compile Include="Models\User\ParamsModel.cs" />
     <Compile Include="Models\User\SearchUsersModel.cs" />
     <Compile Include="Models\User\UserModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
   </ItemGroup>
 
 </Project>

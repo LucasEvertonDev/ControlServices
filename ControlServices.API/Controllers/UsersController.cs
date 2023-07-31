@@ -1,10 +1,10 @@
 ﻿using ControlServices.API.Infrastructure.Attributes;
 using ControlServices.API.Infrastructure.Helpers;
-using ControlServices.API.RouteParams.Users;
 using ControlServices.Core.IContracts.Services.User;
 using ControlServices.Core.Models.Constants;
 using ControlServices.Core.Models.Models.User;
 using ControlServices.Core.Models.Responses;
+using ControlServices.Core.Models.RouteParams.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,6 +20,10 @@ public class UsersController : BaseController
         this._searchUsersService = searchUsersService;
     }
 
+    /// <summary>
+    /// Carrega todos os usuários
+    /// </summary>
+    /// <returns></returns>
     [HttpGet]
     [Authorize(Roles = Roles.Admin)]
     [ProducesResponseType(typeof(ResponseDTO<List<SearchUsersModel>>), StatusCodes.Status200OK)]
@@ -33,13 +37,18 @@ public class UsersController : BaseController
         return Ok(response);
     }
 
+    /// <summary>
+    ///  Carrega usuários com filtros
+    /// </summary>
+    /// <param name="usersParams"></param>
+    /// <returns></returns>
     [HttpGetParams<UsersParams>()]
     [ProducesResponseType(typeof(ResponseDTO<List<SearchUsersModel>>), StatusCodes.Status200OK)]
     public async Task<ActionResult> Get([FromQuery] UsersParams usersParams)
     {
         var response = new ResponseDTO<List<SearchUsersModel>>()
         {
-            Content = await _searchUsersService.ExecuteAsync(),
+            Content = await _searchUsersService.ExecuteAsync(usersParams),
             Sucess = true
         };
         return Ok(response);

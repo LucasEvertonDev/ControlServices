@@ -1,5 +1,6 @@
 ﻿using ControlServices.Core.Models.Enuns;
 using ControlServices.Infra.Utils.Resources;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.OpenApi.Extensions;
 using System.Globalization;
 

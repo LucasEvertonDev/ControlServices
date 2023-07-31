@@ -1,6 +1,7 @@
 ﻿using Azure.Core;
 using ControlServices.Core.IContracts.Repositorys.User;
 using ControlServices.Core.Models.Models.User;
+using ControlServices.Core.Models.RouteParams.Users;
 using ControlServices.Infra.Utils.Exceptions;
 using ControlServices.Infra.Utils.Resources;
 using Microsoft.AspNetCore.Identity;
@@ -82,14 +83,19 @@ public class UserRepository : ICreateUsersRepository, ILoginRepository, ISearchU
         };
     }
 
-    public async Task<List<SearchUsersModel>> FindAllAsync()
+    public async Task<List<SearchUsersModel>> FindAllAsync(UsersParams usersParams)
     {
-        return await _userManager.Users.AsNoTracking().Select(user => new SearchUsersModel
-        {
-            Email = user.Email,
-            PhoneNumber = user.PhoneNumber,
-            Login = user.UserName,
-            Id = user.Id
-        }).ToListAsync();
+        return await _userManager.Users.AsNoTracking()
+            .Where(user => (string.IsNullOrEmpty(usersParams.Email) || user.Email == usersParams.Email)
+                && (usersParams.PhoneNumber.HasValue || user.PhoneNumber.Contains(usersParams.PhoneNumber.Value.ToString()))
+            )
+            .Select(user => new SearchUsersModel
+            {
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Login = user.UserName,
+                Id = user.Id
+            })
+            .ToListAsync();
     }
 }
