@@ -1,5 +1,6 @@
-﻿using ControlServices.Core.IContracts.Repositorys.User;
+﻿using ControlServices.Core.IContracts.Repositorys.UserRepos;
 using ControlServices.Core.IContracts.Services.User;
+using ControlServices.Core.IContracts.UnitOfWork;
 using ControlServices.Core.Models.Models.User;
 using ControlServices.Core.Models.RouteParams.Users;
 
@@ -9,7 +10,7 @@ public class SearchUsersService : BaseService, ISearchUsersService
 {
     private readonly ISearchUsersRepository _searchUsersRepository;
 
-    public SearchUsersService(ISearchUsersRepository searchUsersRepository)
+    public SearchUsersService(ISearchUsersRepository searchUsersRepository, IUnitOfWork unitOfWork) : base(unitOfWork)
     {
         this._searchUsersRepository = searchUsersRepository;
     }

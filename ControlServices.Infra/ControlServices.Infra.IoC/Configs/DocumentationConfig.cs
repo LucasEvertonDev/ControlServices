@@ -1,5 +1,4 @@
-﻿using ControlServices.Infra.IoC.SwaggerConfig;
-using ControlServices.Infra.IoC.SwaggerFilters;
+﻿using ControlServices.Infra.IoC.SwaggerFilters;
 using ControlServices.Infra.Utils.Utils;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;

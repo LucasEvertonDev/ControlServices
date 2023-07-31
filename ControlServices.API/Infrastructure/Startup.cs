@@ -1,5 +1,5 @@
 ﻿using Azure.Core;
-using ControlServices.API.Infrastructure.Filter;
+using ControlServices.API.Infrastructure.Filters;
 using ControlServices.API.Infrastructure.Middlewares;
 using ControlServices.Core.Models.Models.Errors;
 using ControlServices.Core.Models.Responses;

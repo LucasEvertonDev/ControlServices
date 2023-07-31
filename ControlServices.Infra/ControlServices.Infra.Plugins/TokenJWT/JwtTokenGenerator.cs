@@ -8,7 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace ControlServices.Infra.Data.Token;
+namespace ControlServices.Infra.Plugins.TokenJWT;
 
 public class JwtTokenGenerator : IJwtTokenGenerator
 {
@@ -22,7 +22,7 @@ public class JwtTokenGenerator : IJwtTokenGenerator
         SignInManager<ApplicationUser> signInManager,
         RoleManager<IdentityRole> roleManager)
     {
-        this._configuration = configuration;
+        _configuration = configuration;
         _userManager = userManager;
         _signInManager = signInManager;
         _roleManager = roleManager;
@@ -33,7 +33,7 @@ public class JwtTokenGenerator : IJwtTokenGenerator
         var expiration = DateTime.UtcNow.AddHours(double.Parse(_configuration["Jwt:ExpireHours"] ?? ""));
 
         var user = await _userManager.FindByNameAsync(login);
-      
+
         var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"] ?? "");
         var tokenDescriptor = new SecurityTokenDescriptor
         {
@@ -50,10 +50,10 @@ public class JwtTokenGenerator : IJwtTokenGenerator
                 new Claim(ClaimTypes.Email, user.Email ?? "")
             })
         };
-  
+
         var roles = await _userManager.GetRolesAsync(user);
 
-        roles.ToList() .ForEach(role => tokenDescriptor.Subject.AddClaim(new Claim(ClaimTypes.Role, role)));
+        roles.ToList().ForEach(role => tokenDescriptor.Subject.AddClaim(new Claim(ClaimTypes.Role, role)));
 
         var tokenHandler = new JwtSecurityTokenHandler();
         var token = tokenHandler.CreateToken(tokenDescriptor);

@@ -1,6 +1,7 @@
 ﻿using Azure.Core;
-using ControlServices.Core.IContracts.Repositorys.User;
+using ControlServices.Core.IContracts.Repositorys.UserRepos;
 using ControlServices.Core.Models.Models.User;
+using ControlServices.Core.Models.Models.User.Base;
 using ControlServices.Core.Models.RouteParams.Users;
 using ControlServices.Infra.Plugins.Identity;
 using ControlServices.Infra.Utils.Exceptions;
@@ -9,7 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
-namespace ControlServices.Infra.Data.Contexts.Repositorys.User;
+namespace ControlServices.Infra.Data.Contexts.Repositorys;
 
 public class UserRepository : ICreateUsersRepository, ILoginRepository, ISearchUsersRepository
 {
@@ -21,15 +22,15 @@ public class UserRepository : ICreateUsersRepository, ILoginRepository, ISearchU
         SignInManager<ApplicationUser> signInManager,
         RoleManager<IdentityRole> roleManager)
     {
-        this._userManager = userManager;
-        this._signInManager = signInManager;
-        this._roleManager = roleManager;
+        _userManager = userManager;
+        _signInManager = signInManager;
+        _roleManager = roleManager;
     }
 
     public async Task<CreateUsersModel> CreateAsync(CreateUsersModel userModel)
     {
         var user = await _userManager.FindByEmailAsync(userModel.Email);
- 
+
         if (user != null)
         {
             throw new BusinessException(ResourceMessages.EmailAlreadyRegistered);
@@ -57,7 +58,7 @@ public class UserRepository : ICreateUsersRepository, ILoginRepository, ISearchU
         user = await _userManager.FindByNameAsync(userModel.Login);
 
         var role = await _roleManager.FindByNameAsync(userModel.Role);
-        
+
         await _userManager.AddToRoleAsync(user, role.Name);
 
         return userModel;

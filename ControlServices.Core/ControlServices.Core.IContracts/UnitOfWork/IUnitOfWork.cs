@@ -1,4 +1,4 @@
-﻿namespace ControlServices.Core.IContracts.Repositorys;
+﻿namespace ControlServices.Core.IContracts.UnitOfWork;
 
 public interface IUnitOfWork
 {

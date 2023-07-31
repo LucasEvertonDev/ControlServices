@@ -1,5 +1,6 @@
-﻿using ControlServices.Core.IContracts.Repositorys.User;
-using ControlServices.Infra.Data.Contexts.Repositorys.User;
+﻿using ControlServices.Core.IContracts.Repositorys.ClientRepos;
+using ControlServices.Core.IContracts.Repositorys.UserRepos;
+using ControlServices.Infra.Data.Contexts.Repositorys;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ControlServices.Infra.IoC.Configs;
@@ -11,5 +12,8 @@ public static class RepositorysConfig
         services.AddScoped<ICreateUsersRepository, UserRepository>();
         services.AddScoped<ILoginRepository, UserRepository>();
         services.AddScoped<ISearchUsersRepository, UserRepository>();
+
+
+        services.AddScoped<ICreateClientRepository, ClientRepository>();
     }
 }

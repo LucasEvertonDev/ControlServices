@@ -1,7 +1,7 @@
 ﻿using ControlServices.Core.Models.Models.User;
 using ControlServices.Core.Models.RouteParams.Users;
 
-namespace ControlServices.Core.IContracts.Repositorys.User;
+namespace ControlServices.Core.IContracts.Repositorys.UserRepos;
 
 public interface ISearchUsersRepository
 {

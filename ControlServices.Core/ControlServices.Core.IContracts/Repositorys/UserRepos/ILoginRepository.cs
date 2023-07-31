@@ -1,6 +1,7 @@
 ﻿using ControlServices.Core.Models.Models.User;
+using ControlServices.Core.Models.Models.User.Base;
 
-namespace ControlServices.Core.IContracts.Repositorys.User;
+namespace ControlServices.Core.IContracts.Repositorys.UserRepos;
 
 public interface ILoginRepository
 {

@@ -1,11 +1,11 @@
-﻿using ControlServices.Core.Domain.Entities;
-using ControlServices.Core.IContracts.Repositorys;
+﻿using ControlServices.Core.Domain.Entities.Base;
+using ControlServices.Core.IContracts.Repositorys.BaseRepos;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace ControlServices.Infra.Data.Contexts.Repositorys;
+namespace ControlServices.Infra.Data.Contexts.Repositorys.Base;
 
-public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
+public class Repository<TEntity> : ICreateRepository<TEntity>, IDeleteRepository<TEntity>, IUpdateRepository<TEntity>, ISearchRepository<TEntity> where TEntity : BaseEntity
 {
     protected ApplicationDbContext _applicationDbContext;
 
@@ -50,9 +50,9 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEnti
     /// </summary>
     /// <param name="domain"></param>
     /// <returns></returns>
-    public Task<TEntity> Insert(TEntity domain)
+    public Task<TEntity> CreateAsync(TEntity domain)
     {
-        _applicationDbContext.Add(domain);
+        _applicationDbContext.AddAsync(domain);
         return Task.FromResult(domain);
     }
 
@@ -76,14 +76,5 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEnti
     public IQueryable<TEntity> Get()
     {
         return _applicationDbContext.Set<TEntity>().AsNoTracking();
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <returns></returns>
-    public async Task Save()
-    {
-        await _applicationDbContext.SaveChangesAsync();
     }
 }

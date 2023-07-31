@@ -1,6 +1,6 @@
 ﻿using ControlServices.Core.Models.Models.User;
 
-namespace ControlServices.Core.IContracts.Repositorys.User;
+namespace ControlServices.Core.IContracts.Repositorys.UserRepos;
 
 public interface ICreateUsersRepository
 {

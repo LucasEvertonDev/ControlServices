@@ -1,6 +1,7 @@
-﻿using ControlServices.Core.IContracts.Repositorys.User;
+﻿using ControlServices.Core.IContracts.Repositorys.UserRepos;
 using ControlServices.Core.IContracts.Services.Token;
 using ControlServices.Core.IContracts.Services.User;
+using ControlServices.Core.IContracts.UnitOfWork;
 using ControlServices.Core.IContracts.Validator;
 using ControlServices.Core.Models.Models.Token;
 using ControlServices.Core.Models.Models.User;
@@ -15,7 +16,8 @@ public class LoginService : BaseService, ILoginService
 
     public LoginService(IValidatorModel<LoginModel> loginValidatorModel,
         ILoginRepository searchUserRepositor,
-        IJwtTokenGenerator jwtTokenGenerator)
+        IJwtTokenGenerator jwtTokenGenerator,
+        IUnitOfWork unitOfWork) : base(unitOfWork)
     {
         this._loginValidatorModel = loginValidatorModel;
         this._loginRepository = searchUserRepositor;

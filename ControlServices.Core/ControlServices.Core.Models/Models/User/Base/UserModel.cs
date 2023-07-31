@@ -1,8 +1,6 @@
-﻿using ControlServices.Core.Models.IModels;
-using ControlServices.Core.Models.Models.Base;
-using System.Text.Json.Serialization;
+﻿using ControlServices.Core.Models.Models.Base;
 
-namespace ControlServices.Core.Models.Models.User;
+namespace ControlServices.Core.Models.Models.User.Base;
 
 public class UserModel : BaseModel
 {

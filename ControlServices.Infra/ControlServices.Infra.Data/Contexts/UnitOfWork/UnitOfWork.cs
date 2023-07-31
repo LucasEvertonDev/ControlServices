@@ -1,16 +1,16 @@
-﻿using ControlServices.Core.IContracts.Repositorys;
+﻿using ControlServices.Core.IContracts.UnitOfWork;
 using ControlServices.Infra.Utils.Utils;
 
-namespace ControlServices.Infra.Data.Contexts.Repositorys;
+namespace ControlServices.Infra.Data.Contexts.UnitOfWork;
 
 public class UnitOfWork : IUnitOfWork
 {
-	private readonly ApplicationDbContext _context;
+    private readonly ApplicationDbContext _context;
 
-	public UnitOfWork(ApplicationDbContext applicationDbContext)
-	{
+    public UnitOfWork(ApplicationDbContext applicationDbContext)
+    {
         _context = applicationDbContext;
-	}
+    }
 
     public async Task CommitAsync()
     {

@@ -88,6 +88,15 @@ namespace ControlServices.Infra.Utils.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Nome é obrigatório.
+        /// </summary>
+        public static string NameRequired {
+            get {
+                return ResourceManager.GetString("NameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a A Senha deve conter no mínimo seis caracteres.
         /// </summary>
         public static string PasswordMinLenghtSixCharacters {

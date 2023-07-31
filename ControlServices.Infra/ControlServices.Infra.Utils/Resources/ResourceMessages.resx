@@ -126,6 +126,9 @@
   <data name="LoginAlreadRegistered" xml:space="preserve">
     <value>Já existe um usuário cadastrado para o login informado</value>
   </data>
+  <data name="NameRequired" xml:space="preserve">
+    <value>Nome é obrigatório</value>
+  </data>
   <data name="PasswordMinLenghtSixCharacters" xml:space="preserve">
     <value>A Senha deve conter no mínimo seis caracteres</value>
   </data>

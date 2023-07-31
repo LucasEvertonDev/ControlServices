@@ -24,6 +24,8 @@ public static class DependencyInjection
 
         services.RegisterRepositorys();
 
+        services.RegisterAutoMappper();
+
         // Include services
         EngineContext.AddServices(services);
 

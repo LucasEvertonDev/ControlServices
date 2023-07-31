@@ -1,6 +1,6 @@
-﻿using ControlServices.Core.IContracts.Repositorys;
+﻿using ControlServices.Core.IContracts.UnitOfWork;
 using ControlServices.Infra.Data.Contexts;
-using ControlServices.Infra.Data.Contexts.Repositorys;
+using ControlServices.Infra.Data.Contexts.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

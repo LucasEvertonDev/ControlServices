@@ -1,4 +1,4 @@
-﻿using ControlServices.Core.IContracts.Repositorys;
+﻿using ControlServices.Core.IContracts.UnitOfWork;
 using ControlServices.Infra.Utils.Utils;
 using System;
 
@@ -8,9 +8,9 @@ public class BaseService
 {
     private readonly IUnitOfWork _unitOfWork;
 
-    public BaseService()
+    public BaseService(IUnitOfWork unitOfWork)
     {
-        _unitOfWork = EngineContext.GetService<IUnitOfWork>();
+        _unitOfWork = unitOfWork;
     }
 
     public async Task OnTransactionAsync(Func<Task> func)

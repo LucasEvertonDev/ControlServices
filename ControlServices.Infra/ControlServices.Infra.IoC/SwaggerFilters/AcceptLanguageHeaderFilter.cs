@@ -4,16 +4,16 @@ using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace ControlServices.Infra.IoC.SwaggerConfig;
+namespace ControlServices.Infra.IoC.SwaggerFilters;
 public class AcceptLanguageHeaderFilter : IOperationFilter
 {
-    public void Apply(Microsoft.OpenApi.Models.OpenApiOperation operation, OperationFilterContext context)
+    public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
         operation.Parameters.Insert(0, new OpenApiParameter
         {
             In = ParameterLocation.Header,
             Name = "accept-language",
-           // Description = "pass the locale here: examples like => pt,en",
+            // Description = "pass the locale here: examples like => pt,en",
             Schema = new OpenApiSchema
             {
                 Type = "string",
