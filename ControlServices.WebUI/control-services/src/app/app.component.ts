@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { SCRIPTS } from './common/constants/scripts-constants';
+import { ScriptsService } from './common/services/scripts/scripts.service';
+import { AfterContentChecked, AfterViewInit, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'control-services';
 }
