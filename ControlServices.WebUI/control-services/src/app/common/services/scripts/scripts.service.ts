@@ -62,7 +62,6 @@ export class ScriptsService {
     });
   }
 
-
   public async loadMenuScripts() {
     return await Promise.all([
       this.loadScript(SCRIPTS.THEME_HELPERS),
