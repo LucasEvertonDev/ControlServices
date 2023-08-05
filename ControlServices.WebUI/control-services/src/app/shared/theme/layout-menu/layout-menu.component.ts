@@ -13,7 +13,7 @@ export class LayoutMenuComponent  implements OnInit, AfterViewInit{
   }
 
   public ngAfterViewInit(): void {
-    this._scripts.load(SCRIPTS.THEME_HELPERS, SCRIPTS.THEME_CONFIG, SCRIPTS.JQUERY, SCRIPTS.POPPER, SCRIPTS.BOOTSTRAP, SCRIPTS.PERFECT_SCROOL_BAR, SCRIPTS.THEME_MENU, SCRIPTS.THEME_MAIN, SCRIPTS.THEME_BUTTON);
+    this._scripts.loadMenuScripts();
   }
 
   public ngOnInit(): void {
