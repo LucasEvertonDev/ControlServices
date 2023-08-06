@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { SCRIPTS } from 'src/app/common/constants/scripts-constants';
-import { ScriptsService } from 'src/app/common/services/scripts/scripts.service';
+import { ScriptsService } from '../../services/scripts/scripts.service';
 
 @Component({
   selector: 'app-layout-menu',

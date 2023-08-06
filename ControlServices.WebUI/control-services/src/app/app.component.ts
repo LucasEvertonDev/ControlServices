@@ -1,5 +1,3 @@
-import { SCRIPTS } from './common/constants/scripts-constants';
-import { ScriptsService } from './common/services/scripts/scripts.service';
 import { AfterContentChecked, AfterViewInit, Component, OnInit } from '@angular/core';
 
 @Component({
