@@ -1,10 +1,12 @@
-﻿using ControlServices.Core.IContracts.Services.User;
+﻿using ControlServices.API.Infrastructure.Documentation;
+using ControlServices.Core.IContracts.Services.User;
 using ControlServices.Core.Models.Models.Errors;
 using ControlServices.Core.Models.Models.Token;
 using ControlServices.Core.Models.Models.User;
 using ControlServices.Core.Models.Requests;
 using ControlServices.Core.Models.Responses;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace ControlServices.API.Controllers
 {
@@ -60,6 +62,7 @@ namespace ControlServices.API.Controllers
         /// <param name="requestDTO"></param>
         /// <returns></returns>
         [HttpPost("login")]
+        [SwaggerRequestExample(typeof(RequestDTO<LoginModel>), typeof(LoginExample))]
         [ProducesResponseType(typeof(ResponseDTO<TokenModel>), StatusCodes.Status200OK)]
         public async Task<ActionResult> Login([FromBody] RequestDTO<LoginModel> requestDTO)
         {

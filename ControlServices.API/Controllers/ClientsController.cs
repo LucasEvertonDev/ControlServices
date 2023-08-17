@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ControlServices.API.Controllers
 {
+    /// <summary>
+    /// Rotas de Cliente
+    /// </summary>
     public class ClientsController : BaseController
     {
         private readonly ICreateClientsService _createClientsService;
@@ -20,17 +23,9 @@ namespace ControlServices.API.Controllers
         /// <summary>
         /// Create client 
         /// </summary>
-        /// <remarks>
-        /// {
-        ///      "cpf": "13401392603",
-        ///      "name": "lucas",
-        ///      "birthDate": "2023-07-31",
-        ///      "phoneNumber": "998319934"
-        /// }
-        /// </remarks>
         /// <returns></returns>
         [HttpPost]
-        //[Authorize(Roles = Roles.Admin)]
+        [Authorize(Roles = Roles.Admin)]
         [ProducesResponseType(typeof(ResponseDTO<ClientModel>), StatusCodes.Status200OK)]
         public async Task<ActionResult> Post([FromBody] CreateClientsModel createClientsModel)
         {
