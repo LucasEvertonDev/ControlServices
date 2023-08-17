@@ -52,6 +52,8 @@ public class Repository<TEntity> : ICreateRepository<TEntity>, IDeleteRepository
     /// <returns></returns>
     public Task<TEntity> CreateAsync(TEntity domain)
     {
+        _applicationDbContext.Entry(domain).State = EntityState.Added;
+
         _applicationDbContext.AddAsync(domain);
         return Task.FromResult(domain);
     }

@@ -59,6 +59,7 @@ namespace ControlServices.Infra.IoC.Configs
                 c.DocInclusionPredicate((name, api) => true);
 
                 c.OperationFilter<SwaggerDefaultValues>();
+
                 var xmlFilename = $"{EngineContext.Assembly}.xml";
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename), includeControllerXmlComments: false);
 

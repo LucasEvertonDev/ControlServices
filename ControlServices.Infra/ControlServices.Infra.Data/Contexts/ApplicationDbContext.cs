@@ -34,6 +34,11 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                 if (entry.Property("UpdateDate").CurrentValue == null)
                     entry.Property("UpdateDate").CurrentValue = DateTime.Now;
             }
+            else if (entry.State == EntityState.Added)
+            {
+                if (entry.Property("CreateDate").CurrentValue == null)
+                    entry.Property("CreateDate").CurrentValue = DateTime.Now;
+            }
         }
 
         return base.SaveChangesAsync(cancellationToken);

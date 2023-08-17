@@ -37,6 +37,7 @@ public class UsersController : BaseController
         return Ok(response);
     }
 
+
     /// <summary>
     ///  Carrega usuários com filtros
     /// </summary>

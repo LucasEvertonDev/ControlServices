@@ -12,6 +12,6 @@ public class ClientConfiguration : IEntityTypeConfiguration<Client>
         builder.HasKey(u => u.Id);
         builder.Property(u => u.Id).ValueGeneratedOnAdd().IsRequired();
         builder.Property(u => u.Name).HasMaxLength(200).IsRequired();
-        builder.Property(u => u.CreateDate).HasDefaultValue(DateTime.Now);
+        builder.Property(u => u.CreateDate).HasDefaultValueSql("getdate()");
     }
 }
