@@ -38,6 +38,8 @@ namespace ControlServices.Infra.IoC.Configs
 
                 c.OperationFilter<AcceptLanguageHeaderFilter>();
 
+                c.OrderActionsBy((apiDesc) => $"{apiDesc.ActionDescriptor.RouteValues["controller"]}_{apiDesc.HttpMethod}");
+
                 c.TagActionsBy(api =>
                 {
                     if (api.GroupName != null)

@@ -13,8 +13,8 @@ public static class DbContextConfig
     {
         //É obrigatório definir a versão do My Sql 
         services.AddDbContext<ApplicationDbContext>(options =>
-           options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
-               ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection"))));
+              options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
+              b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
     }

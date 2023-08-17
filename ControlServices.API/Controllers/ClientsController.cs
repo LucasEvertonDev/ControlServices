@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ControlServices.API.Controllers
 {
-    [ApiExplorerSettings(GroupName = "Api Cliente")]
+    [ApiExplorerSettings(GroupName = "Cliente")]
     public class ClientsController : BaseController
     {
         private readonly ICreateClientsService _createClientsService;
