@@ -1,5 +1,4 @@
 ﻿using Azure.Core;
-using ControlServices.API.Infrastructure.Documentation;
 using ControlServices.API.Infrastructure.Filters;
 using ControlServices.API.Infrastructure.Middlewares;
 using ControlServices.Core.Models.Models.Errors;
@@ -38,9 +37,6 @@ public class Startup
             options.Filters.Add(new Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute(typeof(ResponseDTO<ErrorsModel>), 500));
         });
 
-        services.AddSwaggerExamplesFromAssemblyOf<LoginExample>();
-
-
         // pra usar o middleware que não é attributee
         services.AddHttpContextAccessor();
         // Add services to the container.
@@ -53,8 +49,6 @@ public class Startup
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-
-
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
@@ -78,7 +72,8 @@ public class Startup
         //SwaggerUI
         app.UseSwaggerUI(c =>
         {
-            c.DocExpansion(DocExpansion.None);
+            //c.DocExpansion(DocExpansion.List);
+            //c.DocExpansion(DocExpansion.None);
         });
 
         app.UseMiddleware<CultureMiddleware>();

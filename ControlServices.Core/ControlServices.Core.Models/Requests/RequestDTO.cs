@@ -1,4 +1,6 @@
 ﻿using ControlServices.Core.Models.Models.Base;
+using ControlServices.Core.Models.Models.User;
+using System.ComponentModel;
 
 namespace ControlServices.Core.Models.Requests;
 
@@ -10,4 +12,7 @@ public class RequestDTO<TRequest> where TRequest : BaseModel
     }
 
     public TRequest Body { get; set; }
+
+    //[DefaultValue("Teste")]
+    //public string Teste { get; set; }
 }

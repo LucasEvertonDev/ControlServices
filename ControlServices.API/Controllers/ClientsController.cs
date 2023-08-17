@@ -8,9 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ControlServices.API.Controllers
 {
-    /// <summary>
-    /// Rotas de Cliente
-    /// </summary>
+    [ApiExplorerSettings(GroupName = "Api Cliente")]
     public class ClientsController : BaseController
     {
         private readonly ICreateClientsService _createClientsService;
